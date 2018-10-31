@@ -1,0 +1,90 @@
+package bsuite.step1.entityfinding;
+
+import org.apache.jena.query.Query;
+import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.QueryExecutionFactory;
+import org.apache.jena.query.QueryFactory;
+import org.apache.jena.query.QuerySolution;
+import org.apache.jena.query.ResultSet;
+import org.apache.jena.query.Syntax;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
+
+
+public class LinkedmdbURIFinder {
+	
+	private static final String datasetEndpoint = "http://data.linkedmdb.org/sparql";
+
+	
+	public static String getURI(String title, int year) {
+		String response = "";
+		Query query = buildQuery(title, year);
+        try ( QueryExecution qexec = QueryExecutionFactory.sparqlService(datasetEndpoint, query) ) {
+            ((QueryEngineHTTP)qexec).addParam("timeout", "10000") ;
+
+    		// create the query result
+            ResultSet results = qexec.execSelect();
+            response = extractURI(results);
+            
+//            if(response.equals("NotFound")) {
+//            	System.out.println(title +" NOT " +year);
+//            }
+            
+            
+        } 
+        catch (Exception e) {
+        	response = "ProblemOccured";
+            e.printStackTrace();
+        }
+        return response;
+	}
+	
+	
+	public static Query buildQuery(String title, int year) {
+		
+		String queryStr = writeQueryString(title, year);
+		
+		Query query = QueryFactory.create(queryStr, Syntax.syntaxARQ) ;
+
+		return query;
+	}
+	
+	public static String writeQueryString(String title, int year) {
+		
+		String queryStr = " not initialized."
+	            ;
+		
+		if(year != 0) {
+			queryStr = " SELECT ?subject where {" + 
+		            "	?subject <http://www.w3.org/2000/01/rdf-schema#label> \"" + title +"\" . " + 
+					"	?subject <http://purl.org/dc/terms/date> ?date. " + 
+					"	FILTER regex(?date, \"^" +year +"\") . "+
+		            "} "
+		            ;
+		}
+		else {
+			queryStr = " SELECT ?subject where {" + 
+		            "	?subject <http://www.w3.org/2000/01/rdf-schema#label> \"" + title +"\" . " + 
+		            "} "
+		            ;
+//			System.out.println("### Movie " +title +" WITHOUT A " +year);
+		}
+		
+		
+
+		return queryStr;
+	}
+	
+	public static String extractURI(ResultSet results) {
+
+		String uriFound = "NotFound";
+		while(results.hasNext()){
+        	QuerySolution soln = results.nextSolution() ;
+        	Resource subject = soln.getResource("subject");
+        	uriFound = subject.getURI();
+        }
+		
+		return uriFound;
+	}
+
+}

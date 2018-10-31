@@ -28,7 +28,8 @@ public class ModelBuilder {
         		if(object.isResource()) {
         			Resource o = (Resource) object;
         		}
-        		subject.addProperty(prop, object);
+        		//subject.addProperty(prop, object);
+        		model.add(subject, prop, object);
         		
 			}
 

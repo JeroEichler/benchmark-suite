@@ -1,5 +1,6 @@
 package bsuite.step2.graphretrieval;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -18,7 +19,9 @@ import bsuite.utils.FoldersNFiles;
 public class Runner {
 
 	public static void main(String[] args) {
-		List<String> genres = BasicIO.readList(FoldersNFiles.inputFolder, FoldersNFiles.genres);
+		//List<String> genres = BasicIO.readList(FoldersNFiles.inputFolder, FoldersNFiles.genres);
+		
+		List<String> genres = Arrays.asList("adventure movies");
 		
 		long start = System.currentTimeMillis();
 		
@@ -50,7 +53,7 @@ public class Runner {
 		EntityList crawledList = new EntityList(genre);
 		EntityList problemList = new EntityList(genre);
 		
-		entityList = EntityIO.readEntityList(FoldersNFiles.inputFolder, genre); 		
+		entityList = EntityIO.readEntityList(FoldersNFiles.uriMapFolder, genre); 		
 		
 		for(Entity entity : entityList.entities) {				
 			if(entity.DBpediaURI.equals("NotFound") || entity.ImdbURI.equals("NotFound") ){
@@ -92,9 +95,9 @@ public class Runner {
 
 		System.out.println(progress);
 		
-		BasicIO.saveEntity(FoldersNFiles.graphFolder+genre, genre, crawledList);
+		BasicIO.saveEntity(FoldersNFiles.graphFolder + "//" + genre, genre, crawledList);
 		
-		if(problemList.entities.size()> 0) {
+		if(problemList.entities.size() > 0) {
 			EntityIO.saveProgress(FoldersNFiles.graphFolder, genre, problemList, false);
 		}
 		

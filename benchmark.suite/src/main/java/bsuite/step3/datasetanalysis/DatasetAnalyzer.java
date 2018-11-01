@@ -24,7 +24,7 @@ public class DatasetAnalyzer {
 	public void process(Entity entity) {
 		for(Statement stmt : entity.model.listStatements().toList()) {
 			Property prop = stmt.getPredicate();
-			if(stmt.getObject().isResource() /*&& stmt.getSubject().getURI().equals(movie.ImdbURI)*/) {
+			if(stmt.getObject().isResource() && stmt.getSubject().getURI().equals(entity.ImdbURI)) {
 				if(occurrences.containsKey(prop)) {
 					PropertyStats it = occurrences.get(prop);
 					it.add(stmt.getObject());;
@@ -34,9 +34,9 @@ public class DatasetAnalyzer {
 					PropertyStats g = new PropertyStats(prop, stmt.getObject());
 					occurrences.put(prop, g);
 				}
-				total++;
 			}
 		}
+		total++;
 	}
 	
 	public void print() {
@@ -46,8 +46,8 @@ public class DatasetAnalyzer {
 //			if(occurrences.get(prop) <500 && occurrences.get(prop) >100)
 			{
 //				System.out.println(prop.propertyCounter + " occurences of " +prop.property.getURI() +" . "+prop.objects.size() +"| " +prop.propertyCounter/prop.objects.size());
-				prop.printValues_v2();
-				prop.printHealth_v2();
+				//prop.printValues();
+				prop.printHealth();
 				
 			}			
 		}
@@ -56,11 +56,24 @@ public class DatasetAnalyzer {
 	public List<String> extractUnbalancedProperties() {
 		List<String> result = new ArrayList<String>();
 		for(PropertyStats prop : occurrences.values()) {
-			if(prop.isNotDiverse())
+			if(prop.isNotDiverse() && this.isPopular(prop))
 			{
 				result.add(prop.property.getURI());				
 			}			
 		}
+		return result;
+	}
+	
+
+	
+
+	public boolean isPopular(PropertyStats prop) {
+		boolean result = false;
+		System.out.println(prop.property.getURI() + "  #" + prop.propertyCounter +"  "+ total);
+			float reason = (float) prop.propertyCounter / total;
+			if( reason > 0.5) {
+				result = true;
+			}
 		return result;
 	}
 }

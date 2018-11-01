@@ -1,6 +1,5 @@
 package bsuite.step2.graphretrieval;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.jena.rdf.model.Model;
@@ -9,6 +8,7 @@ import bsuite.io.EntityIO;
 import bsuite.io.ModelIO;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
+import bsuite.model.GenreLoader;
 import bsuite.utils.FoldersNFiles;
 
 
@@ -18,12 +18,12 @@ public class CrawlingViewer {
 		int movieCounter = 0;
 		long start = System.currentTimeMillis();
 		
-		List<String> genres = Arrays.asList("adventure movies");
+		List<String> genres = GenreLoader.genres();
 		
 		for(String genre : genres) {
 			EntityList entityList = EntityIO.readEntityList(FoldersNFiles.graphFolder + "//" + genre , genre); 
 			for(Entity entity : entityList.entities) {
-				Model model = ModelIO.loadModel(genre, entity.normalizedTitle);
+				Model model = EntityIO.loadGraph(FoldersNFiles.graphFolder, genre, entity.normalizedTitle);
 				movieCounter++;
 				if(entity.ImdbURI.contains("film/38196")) {
 					ModelIO.printModel(model);

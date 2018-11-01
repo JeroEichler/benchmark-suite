@@ -69,5 +69,16 @@ public class EntityIO {
 			
 		ModelIO.saveModel(path, model);	
 	}
+	
+	public static Model loadGraph(String folder, String genre, String title) {
+		
+		String path = FoldersNFiles.root +
+						folder +"//" +
+						genre +"//"+ 
+						title +".ttl";
+			
+		Model model = ModelIO.loadModel(path);	
+		return model;
+	}
 
 }

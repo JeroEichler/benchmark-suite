@@ -6,6 +6,7 @@ import bsuite.io.BasicIO;
 import bsuite.io.EntityIO;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
+import bsuite.model.GenreLoader;
 import bsuite.utils.FoldersNFiles;
 import bsuite.utils.StringFormatter;
 
@@ -18,7 +19,7 @@ public class Runner {
 
 	public static void main(String[] args) {
 
-		List<String> genres = BasicIO.readList(FoldersNFiles.inputFolder, FoldersNFiles.genres);
+		List<String> genres = GenreLoader.genres();
 		
 		for(String genre : genres) {
 			try {

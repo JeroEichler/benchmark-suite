@@ -10,6 +10,9 @@ import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 
+import bsuite.io.BasicIO;
+import bsuite.utils.FoldersNFiles;
+
 public class GraphBuilder {
 	
 	List<List<Statement>> output = new ArrayList<List<Statement>>();
@@ -118,16 +121,7 @@ public class GraphBuilder {
 		 *****************************************************************************************************************/
 		public static HashMap<Resource,List<Statement>> makeList(Model model){
 			
-			List<String> commonProperties = new ArrayList<String>();
-			commonProperties.add("http://www.w3.org/1999/02/22-rdf-syntax-ns#type");
-			commonProperties.add("http://data.linkedmdb.org/resource/movie/country");
-			commonProperties.add("http://data.linkedmdb.org/resource/movie/genre");
-			commonProperties.add("http://xmlns.com/foaf/0.1/based_near");
-			commonProperties.add("http://data.linkedmdb.org/resource/movie/language");
-			commonProperties.add("http://data.linkedmdb.org/resource/oddlinker/link_target");
-			commonProperties.add("http://data.linkedmdb.org/resource/movie/film_format");
-			commonProperties.add("http://data.linkedmdb.org/resource/movie/production_company");
-			commonProperties.add("http://data.linkedmdb.org/resource/movie/featured_film_location");
+			List<String> ignoredProperties = BasicIO.readList(FoldersNFiles.ignPropFolder, FoldersNFiles.ignPropFile);
 			
 			List<Statement> seedStatements = model.listStatements().toList();
 			
@@ -150,7 +144,7 @@ public class GraphBuilder {
 				Resource subject = stmt.getSubject();
 				RDFNode object = stmt.getObject();
 				Property property = stmt.getPredicate();
-				if(!commonProperties.contains(property.getURI())) {
+				if(!ignoredProperties.contains(property.getURI())) {
 					if(object.isResource()) {
 						Resource o = (Resource) object;
 						List<Statement> x = graph.get(subject);

@@ -12,7 +12,7 @@ public class PropertyStats {
 	
 	public Property property;
 	
-	int propertyCounter;
+	public int propertyCounter;
 	
 	List<RDFNode> objects;
 	
@@ -47,11 +47,10 @@ public class PropertyStats {
 
 	
 	public void printValues() {
-		if(property.getURI().equals("http://data.linkedmdb.org/resource/movie/country")
-				|| property.getURI().equals("http://data.linkedmdb.org/resource/movie/language")) {
-			for(RDFNode o : objects){
-				System.out.println("---" +o.toString());
-			}
+		for(RDFNode o : objects){
+			int n = occurrences.get(o);
+			float reason = (float) n / propertyCounter;
+			System.out.println("   ---" +o.toString() +"  "+n+"  "+reason);
 		}
 	}
 	

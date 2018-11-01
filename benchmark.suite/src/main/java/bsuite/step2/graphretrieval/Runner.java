@@ -13,15 +13,15 @@ import bsuite.io.BasicIO;
 import bsuite.io.EntityIO;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
+import bsuite.model.GenreLoader;
 import bsuite.utils.Config;
 import bsuite.utils.FoldersNFiles;
 
 public class Runner {
 
 	public static void main(String[] args) {
-		//List<String> genres = BasicIO.readList(FoldersNFiles.inputFolder, FoldersNFiles.genres);
 		
-		List<String> genres = Arrays.asList("adventure movies");
+		List<String> genres = GenreLoader.genres();
 		
 		long start = System.currentTimeMillis();
 		
@@ -95,7 +95,7 @@ public class Runner {
 
 		System.out.println(progress);
 		
-		BasicIO.saveEntity(FoldersNFiles.graphFolder + "//" + genre, genre, crawledList);
+		BasicIO.saveEntity(FoldersNFiles.graphFolder + "//" + genre, "__" + genre, crawledList);
 		
 		if(problemList.entities.size() > 0) {
 			EntityIO.saveProgress(FoldersNFiles.graphFolder, genre, problemList, false);

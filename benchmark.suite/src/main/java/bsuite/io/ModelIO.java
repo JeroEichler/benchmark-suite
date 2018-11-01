@@ -41,12 +41,12 @@ public class ModelIO {
 		}
 	}
 	
-	public static Model loadModel(String genre, String title) {
+	public static Model loadModel(String fullPath) {
 
         Model model = ModelFactory.createDefaultModel();
         
 		try {
-			File file  = new File("C://benchmarkData//dataGraphFinal//" +genre +"//"+ title +".ttl");
+			File file  = new File(fullPath);
 			if(file.exists()){
 				FileInputStream fileIn = new FileInputStream(file);
 				ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -77,19 +77,12 @@ public class ModelIO {
 			
 			if (!file.exists()) {
 				file.createNewFile();
-				FileOutputStream fileOut = new FileOutputStream(file);
-				ObjectOutputStream out = new ObjectOutputStream(fileOut);
-				model.write(out, "TURTLE");
-				out.close();
-				fileOut.close();
 			}
-			else{
-				FileOutputStream fileOut = new FileOutputStream(file);
-				ObjectOutputStream out = new ObjectOutputStream(fileOut);
-				model.write(out, "TURTLE");
-				out.close();
-				fileOut.close();
-			}
+			FileOutputStream fileOut = new FileOutputStream(file);
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			model.write(out, "TURTLE");
+			out.close();
+			fileOut.close();
  
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

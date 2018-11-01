@@ -12,10 +12,8 @@ import bsuite.utils.FoldersNFiles;
 
 public class Runner {
 
-	static Map<String,List<String>> dictionary;
-
 	public static void main(String[] args) {
-		List<EntityList> lists = EntityLoader.loadMoviesPerGenre(dictionary);
+		List<EntityList> lists = EntityLoader.loadAllEntitiesWithModel();
 		
 		DatasetAnalyzer analyzer = new DatasetAnalyzer();
 		

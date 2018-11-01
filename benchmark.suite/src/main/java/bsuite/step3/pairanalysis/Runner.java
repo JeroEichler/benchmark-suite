@@ -19,6 +19,8 @@ import bsuite.io.ModelIO;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
 import bsuite.model.EntityPairList;
+import bsuite.model.EntityPairPath;
+import bsuite.model.EntityPairScore;
 import bsuite.step3.EntityLoader;
 import bsuite.utils.FoldersNFiles;
 
@@ -29,9 +31,11 @@ public class Runner {
 
 	public static void main(String[] args) {
 		
-		List<EntityList> domain = EntityLoader.loadMoviesPerGenre(dictionary);
+		List<EntityList> domain = EntityLoader.loadAllEntitiesWithModel();
 		
-		List<EntityList> counterDomain = EntityLoader.loadMoviesPerGenre(dictionary);
+		List<EntityList> counterDomain = EntityLoader.loadAllEntitiesWithModel();
+		
+		dictionary = EntityLoader.buildDictionary(domain);
 		long start = System.currentTimeMillis();
 		
 		int combination = 0;
@@ -42,66 +46,74 @@ public class Runner {
 			
 			for(Entity entityOne : list1.entities) {
 				
-				EntityPairList matchedMovies =  new EntityPairList(entityOne);
+				EntityPairList matchedEntities =  new EntityPairList(entityOne);
 				
-//				for(EntityList list2 : counterDomain) {
-//					//do not compare movies with the same genre
-//					if(!dictionary.get(entityOne.normalizedTitle).contains(list2.genre)) {
-//						
-//						//in case movieOne appears in the list of genre (list 2) [deprecated]
-//						if(!list2.getTitles().contains(entityOne.title)) {
-//							for(Entity entityTwo : list2.entities) {
-//								//in case movieTwo appears in two genresFile list, you consider it once
-//								//in case movieTwo appears in genresFile list1
-//								if((!matchedMovies.contains(entityTwo))
-//										&& (NoIntersection(dictionary.get(entityOne.normalizedTitle),dictionary.get(entityTwo.normalizedTitle)))) {
-////									
-////											System.out.println("#O" +movieTwo.model.listStatements().toList().size());
-//
+				for(EntityList list2 : counterDomain) {
+					//do not compare entities with the same genre
+					if(!dictionary.get(entityOne.normalizedTitle).contains(list2.genre)) {
+						
+						//in case entityOne appears in the list of genre (list 2) [deprecated]
+						if(!list2.getTitles().contains(entityOne.title)) {
+							for(Entity entityTwo : list2.entities) {
+								//in case entityTwo appears in two genresFile list, you consider it once
+								//in case entityTwo appears in genresFile list1
+								if((!matchedEntities.contains(entityTwo))
+										&& (NoIntersection(dictionary.get(entityOne.normalizedTitle),dictionary.get(entityTwo.normalizedTitle)))) {
 //									
-//									Resource res1 = ResourceFactory.createResource(entityOne.ImdbURI);
-//									Resource res2 = ResourceFactory.createResource(entityTwo.ImdbURI);
-//									Model model = entityOne.model.union(entityTwo.model);							
-//									
-//									if(model.containsResource(res1) && model.containsResource(res2)) {
-//											
-//										GraphBuilder p = new GraphBuilder();
-//										HashMap<Resource, List<Statement>> graph = GraphBuilder.makeList(model);
-//										
-////										System.out.println(" P: "+movieOne.ImdbURI + " P: "+movieTwo.ImdbURI );
-//										List<List<Statement>> list = p.getAllPaths(res1, res2, graph, pathMaxLength);
-//										
-//										if(list.size() > 0) {
-//											
-//											MoviePairPath pair = new MoviePairPath(entityOne, entityTwo, list);
-//											MoviePairScore pairScore = new MoviePairScore(pair);
-//											
+//											System.out.println("#O" +entityTwo.model.listStatements().toList().size());
+
+									
+									Resource res1 = ResourceFactory.createResource(entityOne.ImdbURI);
+									Resource res2 = ResourceFactory.createResource(entityTwo.ImdbURI);
+									Model model = entityOne.model.union(entityTwo.model);							
+									
+									if(model.containsResource(res1) && model.containsResource(res2)) {
+											
+										GraphBuilder p = new GraphBuilder();
+										HashMap<Resource, List<Statement>> graph = GraphBuilder.makeList(model);
+										
+//										System.out.println(" P: "+entityOne.ImdbURI + " P: "+entityTwo.ImdbURI );
+										List<List<Statement>> list = p.getAllPaths(res1, res2, graph, pathMaxLength);
+										
+										if(list.size() > 0) {
+											
+											EntityPairPath pair = new EntityPairPath(entityOne, entityTwo, list);
+											EntityPairScore pairScore = new EntityPairScore(pair);
+											
 //											System.out.println("#'" +list.size());
-////											System.out.println("#|" +model.listStatements().toList().size());
-//											
-//											MoviePairLoader.savePair(pair);
-//											MoviePairLoader.savePairScore(pairScore);
-//											
-//											matchedMovies.movies.add(entityTwo);
-//											combination++;
-//										}							
-//										
-//									}
-//								}								
-//							}
-//						}
-//						
-//						
-//					}					
-//				}
+//											System.out.println("#|" +model.listStatements().toList().size());
+											
+											String folder = FoldersNFiles.pathFolder + "//" +  pair.base.genre;
+											String fileName = FoldersNFiles.pathPrefix + pair.base.normalizedTitle+ "-"+ pair.candidate.normalizedTitle;
+											BasicIO.saveEntity(folder, fileName, pair);
+											
+											String folder1 = FoldersNFiles.scoreFolder + "//" +  pair.base.genre;
+											String fileName1 = FoldersNFiles.scorePrefix + pair.base.normalizedTitle+ "-"+ pair.candidate.normalizedTitle;
+											BasicIO.saveEntity(folder1, fileName1, pairScore);
+											
+											matchedEntities.entities.add(entityTwo);
+											combination++;
+										}							
+										
+									}
+								}								
+							}
+						}
+						
+						
+					}					
+				}
+				String folder = FoldersNFiles.listFolder + "//" + matchedEntities.base.genre;
+				String fileName = FoldersNFiles.listPrefix + matchedEntities.base.normalizedTitle;
+				BasicIO.saveEntity(folder, fileName, matchedEntities);
 				
-//				MoviePairLoader.savePairBaseList(matchedMovies);
-//				if(matchedMovies.movies.size() > 0) {
-//					entitiesWithPairs.movies.add(entityOne);
-//				}
+				if(matchedEntities.entities.size() > 0) {
+					entitiesWithPairs.entities.add(entityOne);
+				}
 			}
-//			String folder = "pair//list//" + list1.search;
-//			MovieLoader.saveMovieList(folder, list1.search, entitiesWithPairs);
+			String folder = FoldersNFiles.listFolder + "//" +  list1.genre;
+			System.out.println("Saved: " + folder);
+			BasicIO.saveEntity(folder, list1.genre, entitiesWithPairs);
 		}
 		
 		long elapsedTime = System.currentTimeMillis() - start;
@@ -111,41 +123,6 @@ public class Runner {
 		System.out.println("### "+combination+" combination! s");
 
 	}
-	
-//	private static List<EntityList> loadMoviesPerGenre() {
-//		
-//		List<String> genres = BasicIO.readList(FoldersNFiles.inputFolder, FoldersNFiles.genresFile);
-//		
-//		dictionary = new ConcurrentHashMap<String,List<String>>();
-//		
-//		List<EntityList> movies = new ArrayList<EntityList>();
-//
-//		for(String genre : genres) {
-//			EntityList list = EntityIO.readEntityList(FoldersNFiles.graphFolder + "//" + genre , genre); 
-//			for(Entity movie : list.entities) {
-//				Model model = ModelIO.loadModel(genre, movie.title);
-//				movie.model = model;
-//				movie.genre = genre;
-//				
-//				if(dictionary.containsKey(movie.normalizedTitle)) {
-//					List<String> g = dictionary.get(movie.normalizedTitle);
-//					if(!g.contains(genre)) {
-//						g.add(genre);
-//						dictionary.put(movie.normalizedTitle, g);
-//					}
-//				}
-//				else {
-//					List<String> g = new ArrayList<String>();
-//					g.add(genre);
-//					dictionary.put(movie.normalizedTitle, g);
-//				}
-//				
-//			}			
-//			movies.add(list);
-//		}
-//		
-//		return movies;		
-//	}
 	
 
 	public static boolean NoIntersection(List<String> lista, List<String> listb) {

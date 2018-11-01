@@ -23,8 +23,8 @@ public class FoldersNFiles {
 	public static final String pathFolder =		pairFolder + "//Path";
 
 	public static final String scoreFolder =	pairFolder + "//Score";
-//
-//	public static final String ignPropFolder =	"3_IgnoredProperties";
+
+	public static final String recommFolder =	"4_Recommendation";
 	
 	
 	public static final String[] genresX = {
@@ -50,5 +50,7 @@ public class FoldersNFiles {
 	public static final String scorePrefix = "Score_";
 
 	public static final String listPrefix = "_candidatesFor";
+
+	public static final String recommPrefix = "R_";
 
 }

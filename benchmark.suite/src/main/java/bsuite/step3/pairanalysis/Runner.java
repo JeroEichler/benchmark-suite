@@ -113,7 +113,7 @@ public class Runner {
 			}
 			String folder = FoldersNFiles.listFolder + "//" +  list1.genre;
 			System.out.println("Saved: " + folder);
-			BasicIO.saveEntity(folder, list1.genre, entitiesWithPairs);
+			BasicIO.saveEntity(folder, "__" + list1.genre, entitiesWithPairs);
 		}
 		
 		long elapsedTime = System.currentTimeMillis() - start;

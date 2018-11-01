@@ -10,6 +10,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import bsuite.model.EntityList;
+import bsuite.model.EntityPairList;
+import bsuite.model.EntityPairScore;
 import bsuite.utils.FoldersNFiles;
 import bsuite.utils.MapperFactory;
 
@@ -80,5 +82,49 @@ public class EntityIO {
 		Model model = ModelIO.loadModel(path);	
 		return model;
 	}
+	
+	public static EntityPairScore loadPairScore(String folder, String title) {
+		EntityPairScore pairScore = null;		
+
+		try {
+			pairScore = mapper.readValue(new File(
+					FoldersNFiles.root +
+					folder +"//" +
+					title + ".json"), 
+					EntityPairScore.class);
+		} 
+		catch (JsonParseException e) {
+			e.printStackTrace();
+		} 
+		catch (JsonMappingException e) {
+			e.printStackTrace();
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		return pairScore;
+	}
+
+	public static EntityPairList loadPairBaseList(String folder, String title) {
+		EntityPairList pairList = null;		
+
+		try {
+			pairList = mapper.readValue(new File(
+					FoldersNFiles.root +
+					folder +"//" +
+					title + ".json"), 
+					EntityPairList.class);
+		} 
+		catch (JsonParseException e) {
+			e.printStackTrace();
+		} 
+		catch (JsonMappingException e) {
+			e.printStackTrace();
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		return pairList;
+	}		
 
 }

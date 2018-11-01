@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import bsuite.model.EntityList;
 import bsuite.model.EntityPairList;
 import bsuite.model.EntityPairScore;
+import bsuite.step4.recommendation.EntityRecommendation;
 import bsuite.utils.FoldersNFiles;
 import bsuite.utils.MapperFactory;
 
@@ -114,6 +115,28 @@ public class EntityIO {
 					folder +"//" +
 					title + ".json"), 
 					EntityPairList.class);
+		} 
+		catch (JsonParseException e) {
+			e.printStackTrace();
+		} 
+		catch (JsonMappingException e) {
+			e.printStackTrace();
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		return pairList;
+	}
+
+	public static EntityRecommendation loadRecommendation(String folder, String fileName) {
+		EntityRecommendation pairList = null;		
+
+		try {
+			pairList = mapper.readValue(new File(
+					FoldersNFiles.root +
+					folder +"//" +
+					fileName + ".json"), 
+					EntityRecommendation.class);
 		} 
 		catch (JsonParseException e) {
 			e.printStackTrace();

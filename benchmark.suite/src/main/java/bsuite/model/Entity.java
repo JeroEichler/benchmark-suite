@@ -28,8 +28,6 @@ public class Entity {
 	@JsonIgnore
 	public Model model;
 	
-
-	@JsonIgnore
 	public String genre;
 
 }

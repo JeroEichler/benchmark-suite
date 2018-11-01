@@ -9,9 +9,9 @@ import bsuite.utils.FoldersNFiles;
 public class GenreLoader {
 	
 	public static List<String> genres(){
-//		List<String> genres = BasicIO.readList(FoldersNFiles.inputFolder, FoldersNFiles.genresFile);
+		List<String> genres = BasicIO.readList(FoldersNFiles.inputFolder, FoldersNFiles.genresFile);
 		
-		List<String> genres = Arrays.asList(FoldersNFiles.genresX[12]/*, FoldersNFiles.genresX[13], FoldersNFiles.genresX[14]*/);
+//		genres = Arrays.asList(FoldersNFiles.genresX[12]/*, FoldersNFiles.genresX[13], FoldersNFiles.genresX[14]*/);
 		
 		return genres;
 	}

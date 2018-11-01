@@ -21,9 +21,9 @@ public class Runner {
 		int pairs = 0;
 		
 		for(String genre : GenreLoader.genres()) {
-			EntityList movieList = EntityIO.readEntityList(FoldersNFiles.listFolder + "//" + genre , "__" + genre);
+			EntityList entityList = EntityIO.readEntityList(FoldersNFiles.listFolder + "//" + genre , "__" + genre);
 			int movieCounter = 0;
-			for(Entity entity : movieList.entities) {
+			for(Entity entity : entityList.entities) {
 				String folder = FoldersNFiles.listFolder + "//" + genre;
 				String fileName = FoldersNFiles.listPrefix + entity.normalizedTitle;
 				EntityPairList pairList = EntityIO.loadPairBaseList(folder, fileName);

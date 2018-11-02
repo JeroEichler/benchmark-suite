@@ -2,13 +2,13 @@ package bsuite.step1.entityfinding;
 
 import java.util.List;
 
-import bsuite.io.BasicIO;
-import bsuite.io.EntityIO;
-import bsuite.io.FoldersNFiles;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
 import bsuite.model.Genre;
 import bsuite.utils.StringFormatter;
+import bsuite.utils.io.BasicIO;
+import bsuite.utils.io.EntityIO;
+import bsuite.utils.io.FoldersNFiles;
 
 public class Runner {
 

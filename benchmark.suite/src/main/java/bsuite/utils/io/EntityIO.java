@@ -1,4 +1,4 @@
-package bsuite.io;
+package bsuite.utils.io;
 
 import java.io.File;
 import java.io.IOException;

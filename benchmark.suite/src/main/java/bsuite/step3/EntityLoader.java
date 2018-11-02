@@ -6,12 +6,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.apache.jena.rdf.model.Model;
 
-import bsuite.io.EntityIO;
-import bsuite.io.FoldersNFiles;
-import bsuite.io.ModelIO;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
 import bsuite.model.Genre;
+import bsuite.utils.io.EntityIO;
+import bsuite.utils.io.FoldersNFiles;
+import bsuite.utils.io.ModelIO;
 
 public class EntityLoader {
 	

@@ -3,8 +3,8 @@ package bsuite.model;
 import java.util.Arrays;
 import java.util.List;
 
-import bsuite.io.BasicIO;
-import bsuite.io.FoldersNFiles;
+import bsuite.utils.io.BasicIO;
+import bsuite.utils.io.FoldersNFiles;
 
 public class Genre {
 	

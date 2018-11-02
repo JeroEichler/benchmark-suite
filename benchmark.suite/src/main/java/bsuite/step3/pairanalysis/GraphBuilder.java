@@ -10,8 +10,8 @@ import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 
-import bsuite.io.BasicIO;
-import bsuite.io.FoldersNFiles;
+import bsuite.utils.io.BasicIO;
+import bsuite.utils.io.FoldersNFiles;
 
 public class GraphBuilder {
 	

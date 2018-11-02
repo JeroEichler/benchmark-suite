@@ -1,4 +1,4 @@
-package bsuite.base.crawling;
+package bsuite.step2.graphretrieval;
 
 import java.util.List;
 
@@ -12,6 +12,9 @@ import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
+
+import bsuite.model.rdf.BasicQueryBuilder;
+import bsuite.model.rdf.ModelBuilder;
 
 public class Crawler {
 

@@ -1,4 +1,4 @@
-package bsuite.base.crawling;
+package bsuite.model.rdf;
 
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryFactory;
@@ -17,8 +17,6 @@ public class BasicQueryBuilder {
 		}
 		
 		Query query = QueryFactory.create(queryStr, Syntax.syntaxARQ) ;
-		
-//		System.out.println(queryStr);
 
 		return query;
 	}
@@ -28,7 +26,6 @@ public class BasicQueryBuilder {
 		String queryStr = " SELECT ?property ?object where {" + 
 	            "	<"+resource+"> ?property ?object ." + 
 	            "} "
-	            //+"limit 3"
 	            ;
 
 		return queryStr;
@@ -40,7 +37,6 @@ public class BasicQueryBuilder {
 		String queryStr = "SELECT ?property ?subject where {" + 
 	            " ?subject ?property <"+resource+"> ." + 
 	            "} "
-//	            +"limit 3"
 	            ;
 
 		return queryStr;

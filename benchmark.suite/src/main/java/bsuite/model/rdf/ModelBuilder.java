@@ -1,4 +1,4 @@
-package bsuite.base.crawling;
+package bsuite.model.rdf;
 
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;

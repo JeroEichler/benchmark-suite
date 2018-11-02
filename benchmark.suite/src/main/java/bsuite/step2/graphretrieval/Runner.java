@@ -8,7 +8,6 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
 
-import bsuite.base.crawling.Crawler;
 import bsuite.model.entity.Entity;
 import bsuite.model.entity.EntityList;
 import bsuite.model.entity.Genre;

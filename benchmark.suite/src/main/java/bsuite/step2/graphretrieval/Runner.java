@@ -14,14 +14,14 @@ import bsuite.io.EntityIO;
 import bsuite.io.FoldersNFiles;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
-import bsuite.model.GenreLoader;
+import bsuite.model.Genre;
 import bsuite.utils.Config;
 
 public class Runner {
 
 	public static void main(String[] args) {
 		
-		List<String> genres = GenreLoader.genres();
+		List<String> genres = Genre.genres();
 		
 		long start = System.currentTimeMillis();
 		

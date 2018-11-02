@@ -5,7 +5,7 @@ import bsuite.io.FoldersNFiles;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
 import bsuite.model.EntityScore;
-import bsuite.model.GenreLoader;
+import bsuite.model.Genre;
 
 public class RecommViewer {
 	
@@ -16,7 +16,7 @@ public class RecommViewer {
 		int total = 0;
 		int pairs = 0;
 		
-		for(String genre : GenreLoader.genres()) {
+		for(String genre : Genre.genres()) {
 			EntityList entityList = EntityIO.readEntityList(FoldersNFiles.listFolder + "//" + genre , "__" + genre);
 			int entityCounter = 0;
 			for(Entity entity : entityList.entities) {

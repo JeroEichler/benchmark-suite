@@ -11,13 +11,13 @@ import bsuite.io.FoldersNFiles;
 import bsuite.io.ModelIO;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
-import bsuite.model.GenreLoader;
+import bsuite.model.Genre;
 
 public class EntityLoader {
 	
 	public static List<EntityList> loadAllEntitiesWithModel() {
 		
-		List<String> genres = GenreLoader.genres();
+		List<String> genres = Genre.genres();
 		
 		List<EntityList> entityLists = new ArrayList<EntityList>();
 

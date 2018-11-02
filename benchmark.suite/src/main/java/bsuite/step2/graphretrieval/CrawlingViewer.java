@@ -9,7 +9,7 @@ import bsuite.io.FoldersNFiles;
 import bsuite.io.ModelIO;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
-import bsuite.model.GenreLoader;
+import bsuite.model.Genre;
 
 
 public class CrawlingViewer {
@@ -18,7 +18,7 @@ public class CrawlingViewer {
 		int movieCounter = 0;
 		long start = System.currentTimeMillis();
 		
-		List<String> genres = GenreLoader.genres();
+		List<String> genres = Genre.genres();
 		
 		for(String genre : genres) {
 			EntityList entityList = EntityIO.readEntityList(FoldersNFiles.graphFolder + "//" + genre , genre); 

@@ -6,7 +6,7 @@ import java.util.List;
 import bsuite.io.BasicIO;
 import bsuite.io.FoldersNFiles;
 
-public class GenreLoader {
+public class Genre {
 	
 	public static List<String> genres(){
 		List<String> genres = BasicIO.readList(FoldersNFiles.inputFolder, FoldersNFiles.genresFile);

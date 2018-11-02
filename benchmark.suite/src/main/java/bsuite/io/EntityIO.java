@@ -13,7 +13,6 @@ import bsuite.model.EntityList;
 import bsuite.model.EntityPairList;
 import bsuite.model.EntityPairScore;
 import bsuite.step4.recommendation.EntityRecommendation;
-import bsuite.utils.FoldersNFiles;
 import bsuite.utils.MapperFactory;
 
 public class EntityIO {	

@@ -11,7 +11,7 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 
 import bsuite.io.BasicIO;
-import bsuite.utils.FoldersNFiles;
+import bsuite.io.FoldersNFiles;
 
 public class GraphBuilder {
 	

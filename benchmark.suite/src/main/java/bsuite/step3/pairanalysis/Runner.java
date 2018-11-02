@@ -15,6 +15,7 @@ import org.apache.jena.rdf.model.Statement;
 
 import bsuite.io.BasicIO;
 import bsuite.io.EntityIO;
+import bsuite.io.FoldersNFiles;
 import bsuite.io.ModelIO;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
@@ -22,7 +23,6 @@ import bsuite.model.EntityPairList;
 import bsuite.model.EntityPairPath;
 import bsuite.model.EntityPairScore;
 import bsuite.step3.EntityLoader;
-import bsuite.utils.FoldersNFiles;
 
 public class Runner {
 

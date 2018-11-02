@@ -1,4 +1,4 @@
-package bsuite.utils;
+package bsuite.io;
 
 public class FoldersNFiles {
 	

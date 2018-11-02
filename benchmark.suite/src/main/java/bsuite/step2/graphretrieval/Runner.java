@@ -11,11 +11,11 @@ import org.apache.jena.rdf.model.ResourceFactory;
 import bsuite.base.crawling.Crawler;
 import bsuite.io.BasicIO;
 import bsuite.io.EntityIO;
+import bsuite.io.FoldersNFiles;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
 import bsuite.model.GenreLoader;
 import bsuite.utils.Config;
-import bsuite.utils.FoldersNFiles;
 
 public class Runner {
 

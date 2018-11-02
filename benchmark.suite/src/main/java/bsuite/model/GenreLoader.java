@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import bsuite.io.BasicIO;
-import bsuite.utils.FoldersNFiles;
+import bsuite.io.FoldersNFiles;
 
 public class GenreLoader {
 	

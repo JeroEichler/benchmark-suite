@@ -7,11 +7,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.apache.jena.rdf.model.Model;
 
 import bsuite.io.EntityIO;
+import bsuite.io.FoldersNFiles;
 import bsuite.io.ModelIO;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
 import bsuite.model.GenreLoader;
-import bsuite.utils.FoldersNFiles;
 
 public class EntityLoader {
 	

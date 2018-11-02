@@ -1,12 +1,11 @@
 package bsuite.step4.recommendation;
 
-import bsuite.io.BasicIO;
 import bsuite.io.EntityIO;
+import bsuite.io.FoldersNFiles;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
 import bsuite.model.EntityScore;
 import bsuite.model.GenreLoader;
-import bsuite.utils.FoldersNFiles;
 
 public class RecommViewer {
 	

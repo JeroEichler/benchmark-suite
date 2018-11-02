@@ -4,10 +4,10 @@ import java.util.List;
 
 import bsuite.io.BasicIO;
 import bsuite.io.EntityIO;
+import bsuite.io.FoldersNFiles;
 import bsuite.model.Entity;
 import bsuite.model.EntityList;
 import bsuite.model.GenreLoader;
-import bsuite.utils.FoldersNFiles;
 import bsuite.utils.StringFormatter;
 
 public class Runner {

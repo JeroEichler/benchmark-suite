@@ -14,11 +14,13 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
 
 import bsuite.model.rdf.BasicQueryBuilder;
+import bsuite.model.rdf.Constants;
 import bsuite.model.rdf.ModelBuilder;
+import bsuite.utils.Config;
 
 public class Crawler {
 
-	private String datasetEndpoint = "http://www.linkedmdb.org/sparql";
+	private String datasetEndpoint = Config.LinkedMDB;
 	private static int MAXSTEP = 1;
 	
 	public Crawler(String dataset) {
@@ -81,7 +83,7 @@ public class Crawler {
             }
         } 
         catch (Exception e) {
-        	Resource source = model.createResource("Query Problem");
+        	Resource source = model.createResource(Constants.QueryProblem);
     		Property prop = model.createProperty("occured");
     		source.addProperty(prop, "with resource".concat(resource));
 //            e.printStackTrace();
@@ -119,7 +121,7 @@ public class Crawler {
             }
         } 
         catch (Exception e) {
-        	Resource source = model.createResource("Query Problem");
+        	Resource source = model.createResource(Constants.QueryProblem);
     		Property prop = model.createProperty("occured");
     		source.addProperty(prop, "with resource".concat(resource));
 //          e.printStackTrace();

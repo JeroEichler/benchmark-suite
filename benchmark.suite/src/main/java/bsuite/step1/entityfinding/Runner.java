@@ -5,7 +5,7 @@ import java.util.List;
 import bsuite.model.entity.Entity;
 import bsuite.model.entity.EntityList;
 import bsuite.model.entity.Genre;
-import bsuite.utils.Constants;
+import bsuite.model.rdf.Constants;
 import bsuite.utils.StringFormatter;
 import bsuite.utils.io.BasicIO;
 import bsuite.utils.io.EntityIO;

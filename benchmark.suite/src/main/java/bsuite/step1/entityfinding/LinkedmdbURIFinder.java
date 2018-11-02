@@ -10,8 +10,8 @@ import org.apache.jena.query.Syntax;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
 
+import bsuite.model.rdf.Constants;
 import bsuite.utils.Config;
-import bsuite.utils.Constants;
 
 
 public class LinkedmdbURIFinder {

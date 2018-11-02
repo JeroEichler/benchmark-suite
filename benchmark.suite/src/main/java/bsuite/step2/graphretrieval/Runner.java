@@ -1,6 +1,5 @@
 package bsuite.step2.graphretrieval;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -11,6 +10,7 @@ import org.apache.jena.rdf.model.ResourceFactory;
 import bsuite.model.entity.Entity;
 import bsuite.model.entity.EntityList;
 import bsuite.model.entity.Genre;
+import bsuite.model.rdf.Constants;
 import bsuite.utils.Config;
 import bsuite.utils.io.BasicIO;
 import bsuite.utils.io.EntityIO;
@@ -55,7 +55,7 @@ public class Runner {
 		entityList = EntityIO.readEntityList(FoldersNFiles.uriMapFolder, genre); 		
 		
 		for(Entity entity : entityList.entities) {				
-			if(entity.DBpediaURI.equals("NotFound") || entity.ImdbURI.equals("NotFound") ){
+			if(entity.DBpediaURI.equals(Constants.NotFound) || entity.ImdbURI.equals(Constants.NotFound) ){
 				//do nothing.
 				ignoredConter++;
 				System.out.println("--------------------------> nope "+ignoredConter);
@@ -104,7 +104,7 @@ public class Runner {
 
 	
 	private static boolean problemOccured(Model model) {
-		Resource test2 = ResourceFactory.createResource("Query Problem");		
+		Resource test2 = ResourceFactory.createResource(Constants.QueryProblem);		
 		boolean result = model.containsResource(test2);
 		return result;
 	}

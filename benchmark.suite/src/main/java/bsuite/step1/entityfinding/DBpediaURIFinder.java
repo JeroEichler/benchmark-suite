@@ -12,9 +12,9 @@ import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
 
 import bsuite.model.rdf.BasicQueryBuilder;
+import bsuite.model.rdf.Constants;
 import bsuite.model.rdf.ModelBuilder;
 import bsuite.utils.Config;
-import bsuite.utils.Constants;
 
 
 public class DBpediaURIFinder {

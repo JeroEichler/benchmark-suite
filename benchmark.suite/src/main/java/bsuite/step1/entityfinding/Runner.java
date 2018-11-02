@@ -5,6 +5,7 @@ import java.util.List;
 import bsuite.model.entity.Entity;
 import bsuite.model.entity.EntityList;
 import bsuite.model.entity.Genre;
+import bsuite.utils.Constants;
 import bsuite.utils.StringFormatter;
 import bsuite.utils.io.BasicIO;
 import bsuite.utils.io.EntityIO;
@@ -51,15 +52,15 @@ public class Runner {
 			entity.ImdbURI = LinkedmdbURIFinder.getURI(entity.title, entity.year);
 //				System.out.println(movie.title+" | "+movie.ImdbURI);
 			
-			if(entity.DBpediaURI.equals("ProblemOccured") || entity.ImdbURI.equals("ProblemOccured")) {
+			if(entity.DBpediaURI.equals(Constants.ProblemOccured) || entity.ImdbURI.equals(Constants.ProblemOccured)) {
 				problemList.entities.add(entity);
 			}
 			else {
-				if(entity.DBpediaURI.equals("NotFound")) {
+				if(entity.DBpediaURI.equals(Constants.NotFound)) {
 					DBpediaURINotFoundCounter++;
 //					System.out.println(movie.title+" | "+movie.DBpediaURI);
 				}
-				if(entity.ImdbURI.equals("NotFound")) {
+				if(entity.ImdbURI.equals(Constants.NotFound)) {
 					linkedMDBURINotFoundCounter++;
 				}
 				outputList.entities.add(entity);
@@ -78,7 +79,7 @@ public class Runner {
 		
 		BasicIO.saveEntity(FoldersNFiles.uriMapFolder, genre, outputList);
 		
-		if(problemList.entities.size()> 0) {
+		if(problemList.entities.size() > 0) {
 			EntityIO.saveProgress(FoldersNFiles.uriMapFolder, genre, problemList, false);
 		}
 		

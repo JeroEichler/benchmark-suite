@@ -13,11 +13,13 @@ import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
 
 import bsuite.base.crawling.BasicQueryBuilder;
 import bsuite.base.crawling.ModelBuilder;
+import bsuite.utils.Config;
+import bsuite.utils.Constants;
 
 
 public class DBpediaURIFinder {
 	
-	private static final String datasetEndpoint = "http://dbpedia.org/sparql";
+	private static final String datasetEndpoint = Config.DBpedia;
 
 	public static String getURI(String title, int year) {
 		
@@ -27,23 +29,19 @@ public class DBpediaURIFinder {
 		String planC = "http://dbpedia.org/resource/" + name ;
 
 		String uri1 = checkURI(planA);
-		if(uri1.equals("NotFound")) {
+		if(uri1.equals(Constants.NotFound)) {
 			String uri2 = checkURI(planB);
-			if(uri2.equals("NotFound")) {
+			if(uri2.equals(Constants.NotFound)) {
 				String uri3 = checkURI(planC);
 				return uri3;
 			}
-			else {
-				return uri2;
-			}			
+			return uri2;			
 		}
-		else {
-			return uri1;
-		}
+		return uri1;
 	}
 
 	private static String checkURI(String resource) {
-		String response = "NotFound";
+		String response = Constants.NotFound;
 		Query query = BasicQueryBuilder.buildQuery(resource, false);
         try ( QueryExecution qexec = QueryExecutionFactory.sparqlService(datasetEndpoint, query) ) {
             ((QueryEngineHTTP)qexec).addParam("timeout", "10000") ;
@@ -53,7 +51,7 @@ public class DBpediaURIFinder {
             Model model = ModelBuilder.buildModel(resource, results);
             
             if(model.isEmpty()) {
-            	response = "NotFound";
+            	response = Constants.NotFound;
             }
             else {
             	String redirected = checkRedirect(model);
@@ -69,7 +67,7 @@ public class DBpediaURIFinder {
         } 
         catch (Exception e) {
             e.printStackTrace();
-            response = "ProblemOccured";
+            response = Constants.ProblemOccured;
         }
         return response;
 		

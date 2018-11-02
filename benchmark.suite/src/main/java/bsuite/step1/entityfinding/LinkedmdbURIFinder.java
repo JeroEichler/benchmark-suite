@@ -10,10 +10,13 @@ import org.apache.jena.query.Syntax;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
 
+import bsuite.utils.Config;
+import bsuite.utils.Constants;
+
 
 public class LinkedmdbURIFinder {
 	
-	private static final String datasetEndpoint = "http://data.linkedmdb.org/sparql";
+	private static final String datasetEndpoint = Config.LinkedMDB;
 
 	
 	public static String getURI(String title, int year) {
@@ -26,14 +29,9 @@ public class LinkedmdbURIFinder {
             ResultSet results = qexec.execSelect();
             response = extractURI(results);
             
-//            if(response.equals("NotFound")) {
-//            	System.out.println(title +" NOT " +year);
-//            }
-            
-            
         } 
         catch (Exception e) {
-        	response = "ProblemOccured";
+        	response = Constants.ProblemOccured;
             e.printStackTrace();
         }
         return response;
@@ -67,17 +65,14 @@ public class LinkedmdbURIFinder {
 		            "	?subject <http://www.w3.org/2000/01/rdf-schema#label> \"" + title +"\" . " + 
 		            "} "
 		            ;
-//			System.out.println("### Movie " +title +" WITHOUT A " +year);
 		}
 		
-		
-
 		return queryStr;
 	}
 	
 	public static String extractURI(ResultSet results) {
 
-		String uriFound = "NotFound";
+		String uriFound = Constants.NotFound;
 		while(results.hasNext()){
         	QuerySolution soln = results.nextSolution() ;
         	Resource subject = soln.getResource("subject");

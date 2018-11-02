@@ -48,10 +48,10 @@ public class BasicIO {
 			e.printStackTrace();
 		} 
 		catch (IOException e) {
-			e.printStackTrace();
-			/*System.out.println("Erro de leitura : " + FoldersNFiles.root + 
+			//e.printStackTrace();
+			System.out.println("Erro de leitura : " + FoldersNFiles.root + 
 					folder + "//" +
-					fileName +".json");*/
+					fileName +".json");
 		}
 		return list;
 	}

@@ -11,7 +11,6 @@ import bsuite.model.entity.EntityList;
 import bsuite.model.entity.Genre;
 import bsuite.utils.io.EntityIO;
 import bsuite.utils.io.FoldersNFiles;
-import bsuite.utils.io.ModelIO;
 
 public class EntityLoader {
 	
@@ -34,29 +33,29 @@ public class EntityLoader {
 		return entityLists;		
 	}
 	
-	public static Map<String,List<String>> buildDictionary(List<EntityList> entityLists) {
+	public static Map<String,List<String>> buildMap(List<EntityList> entityLists) {
 		
-		Map<String,List<String>> dictionary = new ConcurrentHashMap<String,List<String>>();
+		Map<String,List<String>> map = new ConcurrentHashMap<String,List<String>>();
 
 		for(EntityList list : entityLists) {
 			for(Entity entity : list.entities) {				
-				if(dictionary.containsKey(entity.normalizedTitle)) {
-					List<String> g = dictionary.get(entity.normalizedTitle);
+				if(map.containsKey(entity.normalizedTitle)) {
+					List<String> g = map.get(entity.normalizedTitle);
 					if(!g.contains(list.genre)) {
 						g.add(list.genre);
-						dictionary.put(entity.normalizedTitle, g);
+						map.put(entity.normalizedTitle, g);
 					}
 				}
 				else {
 					List<String> g = new ArrayList<String>();
 					g.add(list.genre);
-					dictionary.put(entity.normalizedTitle, g);
+					map.put(entity.normalizedTitle, g);
 				}
 				
 			}			
 		}
 		
-		return dictionary;		
+		return map;		
 	}
 
 }

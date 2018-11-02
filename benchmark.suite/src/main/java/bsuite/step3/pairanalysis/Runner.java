@@ -1,12 +1,9 @@
 package bsuite.step3.pairanalysis;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-
 import org.apache.jena.ext.com.google.common.collect.Sets;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Resource;
@@ -20,9 +17,7 @@ import bsuite.model.entity.EntityPairPath;
 import bsuite.model.entity.EntityPairScore;
 import bsuite.step3.EntityLoader;
 import bsuite.utils.io.BasicIO;
-import bsuite.utils.io.EntityIO;
 import bsuite.utils.io.FoldersNFiles;
-import bsuite.utils.io.ModelIO;
 
 public class Runner {
 
@@ -35,7 +30,7 @@ public class Runner {
 		
 		List<EntityList> counterDomain = EntityLoader.loadAllEntitiesWithModel();
 		
-		dictionary = EntityLoader.buildDictionary(domain);
+		dictionary = EntityLoader.buildMap(domain);
 		long start = System.currentTimeMillis();
 		
 		int combination = 0;

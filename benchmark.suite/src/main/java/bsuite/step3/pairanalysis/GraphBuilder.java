@@ -15,15 +15,13 @@ import bsuite.utils.io.FoldersNFiles;
 
 public class GraphBuilder {
 	
-	List<List<Statement>> output = new ArrayList<List<Statement>>();
+	List<List<Statement>> output = new ArrayList<List<Statement>>();	
 	
+	int maxLength =3;
 	
 	public GraphBuilder() {
 		output = new ArrayList<List<Statement>>();
 	}
-	
-	static int nada =0;
-	int maxLength =3;
 	
 	/* ***************************************************************************************************************
 	 * Function that initializes the path finding algorithm.
@@ -62,7 +60,6 @@ public class GraphBuilder {
 			ArrayList<Statement> localPathList
 			) {
 			
-			nada++;
 			// Mark the current node
 			isVisited.put(source, true);
 			

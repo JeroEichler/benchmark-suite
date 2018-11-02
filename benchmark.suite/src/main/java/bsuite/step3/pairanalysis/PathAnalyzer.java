@@ -18,11 +18,6 @@ public class PathAnalyzer {
 			else if(path.size() == 3) {
 				sum = sum + 0.125;
 			}
-
-			else if(path.size() == 4) {
-				//sum = sum + 1;
-				System.out.println(sum);
-			}
 		}
 		return sum;
 	}

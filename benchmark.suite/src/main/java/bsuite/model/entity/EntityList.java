@@ -1,4 +1,4 @@
-package bsuite.model;
+package bsuite.model.entity;
 
 import java.util.ArrayList;
 import java.util.List;

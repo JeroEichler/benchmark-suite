@@ -1,4 +1,4 @@
-package bsuite.model;
+package bsuite.model.entity;
 
 public class EntityScore extends Entity {
 	

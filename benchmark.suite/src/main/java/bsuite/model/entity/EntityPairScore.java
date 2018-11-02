@@ -1,4 +1,4 @@
-package bsuite.model;
+package bsuite.model.entity;
 
 import bsuite.step3.pairanalysis.PathAnalyzer;
 

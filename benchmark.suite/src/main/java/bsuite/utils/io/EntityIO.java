@@ -9,9 +9,9 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import bsuite.model.EntityList;
-import bsuite.model.EntityPairList;
-import bsuite.model.EntityPairScore;
+import bsuite.model.entity.EntityList;
+import bsuite.model.entity.EntityPairList;
+import bsuite.model.entity.EntityPairScore;
 import bsuite.step4.recommendation.EntityRecommendation;
 import bsuite.utils.MapperFactory;
 

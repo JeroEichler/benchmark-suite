@@ -2,7 +2,7 @@ package bsuite.step3.pairanalysis;
 
 import java.util.List;
 
-import bsuite.model.JSONStatement;
+import bsuite.model.rdf.JSONStatement;
 
 public class PathAnalyzer {
 	

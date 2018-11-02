@@ -2,9 +2,9 @@ package bsuite.step1.entityfinding;
 
 import java.util.List;
 
-import bsuite.model.Entity;
-import bsuite.model.EntityList;
-import bsuite.model.Genre;
+import bsuite.model.entity.Entity;
+import bsuite.model.entity.EntityList;
+import bsuite.model.entity.Genre;
 import bsuite.utils.StringFormatter;
 import bsuite.utils.io.BasicIO;
 import bsuite.utils.io.EntityIO;

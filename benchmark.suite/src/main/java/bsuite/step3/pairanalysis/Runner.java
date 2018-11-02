@@ -13,11 +13,11 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.rdf.model.Statement;
 
-import bsuite.model.Entity;
-import bsuite.model.EntityList;
-import bsuite.model.EntityPairList;
-import bsuite.model.EntityPairPath;
-import bsuite.model.EntityPairScore;
+import bsuite.model.entity.Entity;
+import bsuite.model.entity.EntityList;
+import bsuite.model.entity.EntityPairList;
+import bsuite.model.entity.EntityPairPath;
+import bsuite.model.entity.EntityPairScore;
 import bsuite.step3.EntityLoader;
 import bsuite.utils.io.BasicIO;
 import bsuite.utils.io.EntityIO;

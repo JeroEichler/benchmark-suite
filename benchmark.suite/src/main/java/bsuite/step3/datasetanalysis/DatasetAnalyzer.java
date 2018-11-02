@@ -8,8 +8,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Statement;
 
-import bsuite.model.Entity;
-import bsuite.model.PropertyStats;
+import bsuite.model.entity.Entity;
+import bsuite.model.rdf.PropertyStats;
 
 public class DatasetAnalyzer {
 	public Map<Property,PropertyStats> occurrences;

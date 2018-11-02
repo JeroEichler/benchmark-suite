@@ -9,9 +9,9 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
 
 import bsuite.base.crawling.Crawler;
-import bsuite.model.Entity;
-import bsuite.model.EntityList;
-import bsuite.model.Genre;
+import bsuite.model.entity.Entity;
+import bsuite.model.entity.EntityList;
+import bsuite.model.entity.Genre;
 import bsuite.utils.Config;
 import bsuite.utils.io.BasicIO;
 import bsuite.utils.io.EntityIO;

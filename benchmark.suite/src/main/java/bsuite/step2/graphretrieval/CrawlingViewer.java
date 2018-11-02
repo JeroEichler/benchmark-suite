@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.jena.rdf.model.Model;
 
-import bsuite.model.Entity;
-import bsuite.model.EntityList;
-import bsuite.model.Genre;
+import bsuite.model.entity.Entity;
+import bsuite.model.entity.EntityList;
+import bsuite.model.entity.Genre;
 import bsuite.utils.io.EntityIO;
 import bsuite.utils.io.FoldersNFiles;
 import bsuite.utils.io.ModelIO;

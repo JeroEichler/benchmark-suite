@@ -1,4 +1,4 @@
-package bsuite.model;
+package bsuite.model.entity;
 
 import org.apache.jena.rdf.model.Model;
 

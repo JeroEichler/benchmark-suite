@@ -70,6 +70,9 @@ public class Runner {
 //										System.out.println(" P: "+entityOne.ImdbURI + " P: "+entityTwo.ImdbURI );
 										List<List<Statement>> list = p.getAllPaths(res1, res2, graph, pathMaxLength);
 										
+										// if there is a path from entityOne to entityTwo,
+										// then a pair is added to the list of possible candidate recommendations for
+										// entityOne.
 										if(list.size() > 0) {
 											
 											EntityPairPath pair = new EntityPairPath(entityOne, entityTwo, list);

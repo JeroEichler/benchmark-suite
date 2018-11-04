@@ -47,10 +47,13 @@ public class PropertyStats {
 
 	
 	public void printValues() {
+		System.out.println("# " +property.getURI());
 		for(RDFNode o : objects){
 			int n = occurrences.get(o);
 			float reason = (float) n / propertyCounter;
-			System.out.println("   ---" +o.toString() +"  "+n+"  "+reason);
+			if(reason > 0.75) {
+				System.out.println("   ---" +o.toString() +"  "+n+"  "+reason);
+			}
 		}
 	}
 	

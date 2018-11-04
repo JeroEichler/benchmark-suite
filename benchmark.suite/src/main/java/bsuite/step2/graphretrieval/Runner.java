@@ -27,7 +27,7 @@ public class Runner {
 		for(String genre : genres) {
 			long startB = System.currentTimeMillis();
 			
-			readEntitiesOf(genre);
+			loadEntitiesOf(genre);
 			
 			long elapsedTimeB = System.currentTimeMillis() - startB;
 			
@@ -45,7 +45,7 @@ public class Runner {
 		System.out.println("### Finished at "+elapsedTime/1000F+" seconds");
 	}
 	
-	public static void readEntitiesOf(String genre) {
+	public static void loadEntitiesOf(String genre) {
 		int savedConter=0;
 		int ignoredConter=0;
 		EntityList entityList = null;
@@ -58,7 +58,7 @@ public class Runner {
 			if(entity.DBpediaURI.equals(Constants.NotFound) || entity.ImdbURI.equals(Constants.NotFound) ){
 				//do nothing.
 				ignoredConter++;
-				System.out.println("--------------------------> nope "+ignoredConter);
+				//System.out.println("--------------------------> nope "+ignoredConter);
 			}
 			else{
 				Crawler crawler = new Crawler(Config.RemoteEndpoint);
@@ -73,7 +73,7 @@ public class Runner {
 					EntityIO.saveGraph(FoldersNFiles.graphFolder, genre, entity.normalizedTitle, model);
 					crawledList.entities.add(entity);
 					savedConter++;
-					System.out.println("gone "+savedConter);
+					//System.out.println("gone "+savedConter);
 				}
 				
 				

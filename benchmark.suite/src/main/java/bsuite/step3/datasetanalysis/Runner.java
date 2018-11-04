@@ -1,7 +1,6 @@
 package bsuite.step3.datasetanalysis;
 
 import java.util.List;
-import java.util.Map;
 
 import bsuite.model.entity.Entity;
 import bsuite.model.entity.EntityList;
@@ -23,9 +22,10 @@ public class Runner {
 			}
 		}
 		
-		analyzer.print();
+		//analyzer.print();
 		
 		List<String> ignoredProperties = analyzer.extractUnbalancedProperties();
+		ignoredProperties.add("http://data.linkedmdb.org/resource/movie/genre");
 		
 		System.out.println("##########################################");
 		

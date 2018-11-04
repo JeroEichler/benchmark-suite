@@ -46,8 +46,8 @@ public class DatasetAnalyzer {
 //			if(occurrences.get(prop) <500 && occurrences.get(prop) >100)
 			{
 //				System.out.println(prop.propertyCounter + " occurences of " +prop.property.getURI() +" . "+prop.objects.size() +"| " +prop.propertyCounter/prop.objects.size());
-				//prop.printValues();
-				prop.printHealth();
+				prop.printValues();
+				//prop.printHealth();
 				
 			}			
 		}

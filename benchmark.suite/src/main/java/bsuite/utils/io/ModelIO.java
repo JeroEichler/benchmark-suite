@@ -15,6 +15,7 @@ import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
+import org.apache.jena.riot.RiotException;
 
 public class ModelIO {
 
@@ -63,6 +64,9 @@ public class ModelIO {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RiotException e) {
+			System.out.println(fullPath);
 			e.printStackTrace();
 		} 
 		

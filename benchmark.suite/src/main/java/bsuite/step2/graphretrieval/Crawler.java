@@ -21,7 +21,7 @@ import bsuite.utils.Config;
 public class Crawler {
 
 	private String datasetEndpoint = Config.LinkedMDB;
-	private static int MAXSTEP = 1;
+	private static int MAXSTEP = 2;
 	
 	public Crawler(String dataset) {
 		this.datasetEndpoint = dataset;

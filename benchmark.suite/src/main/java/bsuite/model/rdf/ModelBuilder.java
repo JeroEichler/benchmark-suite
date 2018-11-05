@@ -25,11 +25,14 @@ public class ModelBuilder {
         		Resource p = soln.getResource("property");
         		Property prop = ResourceFactory.createProperty(p.getURI());
         		RDFNode object = soln.get("object");
-        		if(object.isResource()) {
-        			Resource o = (Resource) object;
+//        		if(object.isResource()) {
+//        			fixResourceURI(model, object);
+//        		}
+        		////subject.addProperty(prop, object);
+        		if(validUri(object)) {
+        			model.add(subject, prop, object);
         		}
-        		//subject.addProperty(prop, object);
-        		model.add(subject, prop, object);
+        		
         		
 			}
 
@@ -39,7 +42,7 @@ public class ModelBuilder {
 		
 		return model;
 	}
-	
+
 	public static Model buildInverseModel(String resource, ResultSet results) {
 		
 		Model model =  ModelFactory.createDefaultModel();
@@ -64,5 +67,29 @@ public class ModelBuilder {
 //		System.out.println("end --------------------------------------------------------");
 		
 		return model;
+	}
+	
+	public static void fixResourceURI(Model model, RDFNode node) {
+		Resource resource = (Resource) node;
+		String uri = resource.getURI();
+		if(uri.contains("\"")) {
+			String newUri = uri.replace("\"", "");
+			System.out.println("|A|" + newUri);
+			Resource newResource = model.createResource(newUri);
+			
+			node = newResource;
+		}		
+	}
+	
+	private static boolean validUri(RDFNode node) {
+		if(node.isLiteral()) {
+			return true;
+		}
+		Resource resource = (Resource) node;
+		if(resource.getURI().contains("\"")) {
+			System.out.println("|A|" + resource.getURI());
+			return false;
+		}
+		return true;
 	}
 }

@@ -15,8 +15,8 @@ public class Genre {
 		
 		genres = BasicIO.readList(FoldersNFiles.inputFolder, FoldersNFiles.genresFile);
 		
-		genres = Arrays.asList(/*genresX[1], genresX[5], genresX[8],*/
-				genresX[9]/*, genresX[10]*/ );
+//		genres = Arrays.asList(/*genresX[1], genresX[5], genresX[8],*/
+//				genresX[9]/*, genresX[10]*/ );
 		
 		return genres;
 	}

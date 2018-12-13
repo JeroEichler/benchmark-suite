@@ -56,7 +56,7 @@ public class DatasetAnalyzer {
 	public List<String> extractUnbalancedProperties() {
 		List<String> result = new ArrayList<String>();
 		for(PropertyStats prop : occurrences.values()) {
-			if(prop.isNotDiverse() && this.isPopular(prop))
+			if(prop.isNotDiverse() /*&& this.isPopular(prop)*/)
 			{
 				result.add(prop.property.getURI());				
 			}			
@@ -71,7 +71,7 @@ public class DatasetAnalyzer {
 		boolean result = false;
 		System.out.println(prop.property.getURI() + "  #" + prop.propertyCounter +"  "+ total);
 			float reason = (float) prop.propertyCounter / total;
-			if( reason > 0.5) {
+			if( reason > 0.4) {
 				result = true;
 			}
 		return result;

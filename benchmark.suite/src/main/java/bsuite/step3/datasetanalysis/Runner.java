@@ -22,7 +22,7 @@ public class Runner {
 			}
 		}
 		
-		//analyzer.print();
+		analyzer.print();
 		
 		List<String> ignoredProperties = analyzer.extractUnbalancedProperties();
 		ignoredProperties.add("http://data.linkedmdb.org/resource/movie/genre");

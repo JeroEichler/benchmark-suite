@@ -19,7 +19,7 @@ public class LinkedmdbURIFinder {
 	private static final String datasetEndpoint = Config.LinkedMDB;
 
 	
-	public static String getURI(String title, int year) {
+	public static String getUri(String title, int year) {
 		String response = "";
 		Query query = buildQuery(title, year);
         try ( QueryExecution qexec = QueryExecutionFactory.sparqlService(datasetEndpoint, query) ) {

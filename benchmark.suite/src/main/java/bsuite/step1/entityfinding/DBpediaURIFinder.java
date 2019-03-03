@@ -21,7 +21,7 @@ public class DBpediaURIFinder {
 	
 	private static final String datasetEndpoint = Config.DBpedia;
 
-	public static String getURI(String title, int year) {
+	public static String getUri(String title, int year) {
 		
 		String name = title.replace(' ', '_');
 		String planA = "http://dbpedia.org/resource/" + name + "_(" +year+ "_film)";

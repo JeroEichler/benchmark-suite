@@ -75,9 +75,6 @@ public class Runner {
 					savedConter++;
 					//System.out.println("gone "+savedConter);
 				}
-				
-				
-
 				try {
 					
 					TimeUnit.SECONDS.sleep(5);

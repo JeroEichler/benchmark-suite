@@ -46,10 +46,10 @@ public class Runner {
 		for(Entity entity : entityList.entities) {
 			entity.normalizedTitle = StringFormatter.clean(entity.title);
 			entityCounter++;
-			entity.DBpediaURI = DBpediaURIFinder.getUri(entity.title, entity.year);
+			entity.DBpediaURI = UriLookUp.getUriFromDBpedia(entity.title, entity.year);
 //				System.out.println(movie.title+" | "+movie.DBpediaURI);
 			
-			entity.ImdbURI = LinkedmdbURIFinder.getUri(entity.title, entity.year);
+			entity.ImdbURI = UriLookUp.getUriFromLinkedmdbURI(entity.title, entity.year);
 //				System.out.println(movie.title+" | "+movie.ImdbURI);
 			
 			if(entity.DBpediaURI.equals(Constants.ProblemOccured) || entity.ImdbURI.equals(Constants.ProblemOccured)) {

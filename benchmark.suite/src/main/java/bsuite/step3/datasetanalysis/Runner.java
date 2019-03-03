@@ -25,7 +25,7 @@ public class Runner {
 		analyzer.print();
 		
 		List<String> ignoredProperties = analyzer.extractUnbalancedProperties();
-		ignoredProperties.add("http://data.linkedmdb.org/resource/movie/genre");
+		manualSetUp(ignoredProperties);
 		
 		System.out.println("##########################################");
 		
@@ -34,6 +34,10 @@ public class Runner {
 		}
 		
 		BasicIO.saveEntity(FoldersNFiles.ignPropFolder, FoldersNFiles.ignPropFile, ignoredProperties);
+	}
+	
+	private static void manualSetUp(List<String> ignoredProperties) {
+		ignoredProperties.add("http://data.linkedmdb.org/resource/movie/genre");
 	}
 
 }

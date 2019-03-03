@@ -1,11 +1,7 @@
-package bsuite.step4.recommendation;
+package bsuite.model.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import bsuite.model.entity.Entity;
-import bsuite.model.entity.EntityPairScore;
-import bsuite.model.entity.EntityScore;
 
 public class EntityRecommendation {
 

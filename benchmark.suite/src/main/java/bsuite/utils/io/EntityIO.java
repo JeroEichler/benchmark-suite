@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import bsuite.model.entity.EntityList;
 import bsuite.model.entity.EntityPairList;
 import bsuite.model.entity.EntityPairScore;
-import bsuite.step4.recommendation.EntityRecommendation;
+import bsuite.model.entity.EntityRecommendation;
 import bsuite.utils.MapperFactory;
 
 public class EntityIO {	

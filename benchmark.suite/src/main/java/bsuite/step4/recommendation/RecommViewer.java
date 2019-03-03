@@ -2,6 +2,7 @@ package bsuite.step4.recommendation;
 
 import bsuite.model.entity.Entity;
 import bsuite.model.entity.EntityList;
+import bsuite.model.entity.EntityRecommendation;
 import bsuite.model.entity.EntityScore;
 import bsuite.model.entity.Genre;
 import bsuite.utils.io.EntityIO;

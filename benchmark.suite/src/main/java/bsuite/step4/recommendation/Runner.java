@@ -40,9 +40,8 @@ public class Runner {
 					candidatePairs.add(pairScore);
 					pairs++;
 				}
-				Collections.sort(candidatePairs);
-				EntityRecommendation recomm = new EntityRecommendation(entity);
-				recomm.addSuggestion(candidatePairs);
+				
+				EntityRecommendation recomm = Recommender.makeRecommendation(entity, candidatePairs);
 				
 				String folder1 = FoldersNFiles.recommFolder + "//" + recomm.base.genre;
 				String fileName1 = FoldersNFiles.recommPrefix + recomm.base.normalizedTitle;
